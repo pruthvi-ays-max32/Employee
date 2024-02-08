@@ -10,14 +10,14 @@ const App = () => {
     text:"ays software solution",
   }
   const[employees,updatedEmployees] = useState([
-      {id : 1, name : "Kunal", Department : "Tester", salary : "60000"},
-      {id : 2, name : "Pratte", Department : "Developer", salary : "80000"},
-      {id : 3, name : "Nupur", Department : "Tester", salary : "60000"},
-      {id : 4, name : "Abhishek", Department:"Developer", salary : "80000"},
-      {id : 5, name: "Trupti", Department:"Developer", salary : "80000"},
-      {id : 6, name: "Prerana" , Department:"Developer", salary : "80000"},
-      {id : 7, name : "Mehvish", Department:"DevOps Engineer", salary:"60000"},
-      {id : 8, name : "Abhi", Department:"Senior Developer", salary : "1000000"}
+      {id : 1, name : "Kunal", dept : "Tester", salary : "60000"},
+      {id : 2, name : "Pratte", dept : "Developer", salary : "80000"},
+      {id : 3, name : "Nupur", dept : "Tester", salary : "60000"},
+      {id : 4, name : "Abhishek", dept:"Developer", salary : "80000"},
+      {id : 5, name: "Trupti",dept:"Developer", salary : "80000"},
+      {id : 6, name: "Prerana" , dept:"Developer", salary : "80000"},
+      {id : 7, name : "Mehvish", dept :"DevOps Engineer", salary:"60000"},
+      {id : 8, name : "Abhi", dept:"Senior Developer", salary : "1000000"}
     ])
  
 
