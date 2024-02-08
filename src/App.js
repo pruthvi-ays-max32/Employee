@@ -82,6 +82,7 @@ const App = () => {
     newEmpobj["id"]=empId
     temp.push(newEmpobj)
     console.log("ok",newEmpobj);
+    console.log("aaaa")
     updatedEmployees(temp)
     setSelectedCentre("")
   }
