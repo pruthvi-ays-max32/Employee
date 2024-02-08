@@ -1,25 +1,139 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState} from 'react'
+import './App.css'
+import Navbar from './components/Navbar'
+import EmpDetails from './components/EmpDetails.jsx'
+import Employee from './components/Employee.jsx'
 
-function App() {
+
+const App = () => {
+  const obj={
+    text:"ays software solution",
+  }
+  const[employees,updatedEmployees] = useState([
+      {id : 1, name : "Kunal", Department : "Tester", salary : "60000"},
+      {id : 2, name : "Pratte", Department : "Developer", salary : "80000"},
+      {id : 3, name : "Nupur", Department : "Tester", salary : "60000"},
+      {id : 4, name : "Abhishek", Department:"Developer", salary : "80000"},
+      {id : 5, name: "Trupti", Department:"Developer", salary : "80000"},
+      {id : 6, name: "Prerana" , Department:"Developer", salary : "80000"},
+      {id : 7, name : "Mehvish", Department:"DevOps Engineer", salary:"60000"},
+      {id : 8, name : "Abhi", Department:"Senior Developer", salary : "1000000"}
+    ])
+ 
+
+  // const[employees,updatedEmployees] = useState([])
+
+
+
+  // Method 1 : Using async-await Method
+
+  // useEffect(()=>{
+  //   const fetchData = async ()=>{
+  //     try {
+  //       const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  //       const result = await response.json();
+  //       console.log("Successfully Fetched")
+  //       updatedEmployees(result);
+  //     }
+  //     catch(error){
+  //       console.log("Error is " , error)
+  //     }
+  //   }
+  //   fetchData();
+  // },  [])
+
+  
+
+
+  /*
+  // Method 2 : Using promises method
+  useEffect(()=>{
+    fetch("https://jsleholder.typicode.com/users")
+      .then(response=>{
+        if(!response){
+          throw new Error("Network Response Was Not Ok");
+        }
+        else{
+          return response.json()
+        }        
+      })
+      .then(result=>{
+        updatedEmployees(result)
+        console.log("Successfully Fetched")
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
+  }, [])
+
+*/
+
+
+  const[selectedEmp,setSelectedEmp] = useState({})
+  function selectEmployee(employee){
+    setSelectedEmp(employee)   
+  }
+  
+  function addemp(newEmpobj)
+  {
+    setSelectedEmp({})
+    let empId=employees.length + 1
+    let temp=JSON.parse(JSON.stringify(employees))
+    newEmpobj["id"]=empId
+    temp.push(newEmpobj)
+    console.log("ok",newEmpobj);
+    updatedEmployees(temp)
+    setSelectedCentre("")
+  }
+  function delEmp()
+  {
+    let tempArr=JSON.parse(JSON.stringify(employees))
+    tempArr=tempArr.filter(employee => {
+      return employee.id !== selectedEmp.id;
+    });
+    updatedEmployees(tempArr)
+    setSelectedCentre("")
+  }
+  
+
+  function editEmployee(editedEmpobj)
+  {
+    
+    let tempArr=JSON.parse(JSON.stringify(employees))
+    let empIndex=tempArr.findIndex(obj => obj.id === selectedEmp.id);
+    console.log("index found",empIndex)
+    
+    tempArr[empIndex]=editedEmpobj
+    console.log("curr obj",tempArr[empIndex]);
+    updatedEmployees(tempArr)
+    setSelectedCentre("")
+
+  }
+  
+  
+  //selected employee state
+  
+  // state for centre div
+  const[selectedCentre,setSelectedCentre]=useState("")
+
+  function displayCentre(e)
+  {
+    setSelectedCentre(e.target.id)
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="demo">
+      <Navbar obj={obj} displayCentre={displayCentre} />
+      <div className='main'>
+      <Employee empArr={employees} selectedEmp={selectedEmp} selectEmployee={selectEmployee} displayCentre={displayCentre}/>
+      <EmpDetails selectedEmp={selectedEmp} selectedCentre={selectedCentre} addemp={addemp} displayCentre={displayCentre} setSelectedEmp={setSelectedEmp} delEmp={delEmp} editEmployee={editEmployee}/>
+      
+      </div>
+     
+                  
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
