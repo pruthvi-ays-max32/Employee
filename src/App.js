@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import EmpDetails from './components/EmpDetails.jsx'
@@ -9,38 +9,38 @@ const App = () => {
   const obj={
     text:"ays software solution",
   }
-  const[employees,updatedEmployees] = useState([
-      {id : 1, name : "Kunal", dept : "Tester", salary : "60000"},
-      {id : 2, name : "Pratte", dept : "Developer", salary : "80000"},
-      {id : 3, name : "Nupur", dept : "Tester", salary : "60000"},
-      {id : 4, name : "Abhishek", dept:"Developer", salary : "80000"},
-      {id : 5, name: "Trupti",dept:"Developer", salary : "80000"},
-      {id : 6, name: "Prerana" , dept:"Developer", salary : "80000"},
-      {id : 7, name : "Mehvish", dept :"DevOps Engineer", salary:"60000"},
-      {id : 8, name : "Abhi", dept:"Senior Developer", salary : "1000000"}
-    ])
+  // const[employees,updatedEmployees] = useState([
+  //     {"id" : 1, "name" : "Kunal", "dept" : "Tester", "salary" : "60000"},
+  //     {"id" : 2, "name" : "Pratte", "dept" : "Developer", "salary" : "80000"},
+  //     {"id" : 3, "name" : "Nupur", "dept" : "Tester", "salary" : "60000"},
+  //     {"id" : 4, "name" : "Abhishek", "dept":"Developer", "salary" : "80000"},
+  //     {"id" : 5, "name": "Trupti","dept":"Developer", "salary" : "80000"},
+  //     {"id" : 6, "name": "Prerana" , "dept":"Developer", "salary" : "80000"},
+  //     {"id" : 7, "name" : "Mehvish", "dept" :"DevOps Engineer", "salary":"60000"},
+  //     {"id" : 8, "name" : "Abhi", "dept":"Senior Developer", "salary" : "1000000"}
+  //   ])
  
 
-  // const[employees,updatedEmployees] = useState([])
+  const[employees,updatedEmployees] = useState([])
 
 
 
   // Method 1 : Using async-await Method
 
-  // useEffect(()=>{
-  //   const fetchData = async ()=>{
-  //     try {
-  //       const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  //       const result = await response.json();
-  //       console.log("Successfully Fetched")
-  //       updatedEmployees(result);
-  //     }
-  //     catch(error){
-  //       console.log("Error is " , error)
-  //     }
-  //   }
-  //   fetchData();
-  // },  [])
+  useEffect(()=>{
+    const fetchData = async ()=>{
+      try {
+        const response = await fetch("https://4f2b71f08a2546e6b59aa718e3ae4071.api.mockbin.io/");
+        const result = await response.json();
+        console.log("Successfully Fetched")
+        updatedEmployees(result);
+      }
+      catch(error){
+        console.log("Error is " , error)
+      }
+    }
+    fetchData();
+  },  [])
 
   
 

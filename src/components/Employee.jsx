@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {Stack, Box, Button} from '@mui/material'
 import './employee.css'
 const Employee = (props) => {
   const [selectedBt, setselectedBt]=useState("")
@@ -16,21 +17,20 @@ const Employee = (props) => {
 
       
   return (
-    <div className='employee'>
+    <Stack className='employee'>
     <Toolbar empArr={props.empArr} inputValue={inputValue} handleInputChange={handleInputChange} onSort={onSort} selectedBt={selectedBt}/>
     <Employeelist empArr={props.empArr} selectedEmp={props.selectedEmp}  selectEmployee={props.selectEmployee} inputValue={inputValue} handleInputChange={handleInputChange} selectedBt={selectedBt} displayCentre={props.displayCentre} />
-    </div>
+    </Stack>
   )
 }
 const Toolbar = (props) => {
   
   return (
-    <div className='Toolbar'>
+    <Box >
       <input  type="text" value={props.inputValue} onChange={props.handleInputChange} />
-      <button  className='asc' type='button' style={{backgroundColor: props.selectedBt==="asc" ? "red" : "green"}} onClick={()=>props.onSort("asc")} >Asc</button>
-      <button  className='dsc' type='button' style={{backgroundColor: props.selectedBt==="dsc" ? "red" : "green"}} onClick={()=>props.onSort("dsc")}>Dsc</button>
-    
-    </div>
+      <Button  className='asc' type='button' style={{backgroundColor: props.selectedBt==="asc" ? "red" : "green"}} onClick={()=>props.onSort("asc")} >Asc</Button>
+      <Button  className='dsc' type='button' style={{backgroundColor: props.selectedBt==="dsc" ? "red" : "green"}} onClick={()=>props.onSort("dsc")}>Dsc</Button>  
+    </Box>
   )
 }
 const Emp = (props)=>{
