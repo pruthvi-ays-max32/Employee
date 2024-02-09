@@ -147,8 +147,7 @@ export default EmpForm;
 // Using Material UI
 
 import React, { useState } from 'react'
-import './empdetails.css'
-import { Stack, MenuItem, Select, FormControl, InputLabel, TextField, Button } from '@mui/material'
+import { Stack, MenuItem, Select, FormControl, InputLabel, TextField, Button, Box } from '@mui/material'
 
 
 const EmpForm = (props) => {
@@ -170,47 +169,49 @@ const EmpForm = (props) => {
   }
 
   return (
-    <Stack sx={{ py: 10, px: 40 }} spacing={2}>
-
-      <TextField
-        label="Name"
-        id="1"
-        type="text"
-        name="name"
-        onChange={updateData}
-        required
-      />
-
-      <TextField 
-        
-        label="Salary"
-        id="2"
-        type="number"
-        name="salary"
-        onChange={updateData}
-        required
-      />
-
-<FormControl fullWidth>
-        <InputLabel id="Label">Dept</InputLabel>
-        <Select
-          labelId="Label"
-          id="4"
-          name="dept"
+    <Box>
+      <Stack sx={{ py: 10, px: 10 }} spacing={2}>
+        <TextField
+          label="Name"
+          id="1"
+          type="text"
+          name="name"
           onChange={updateData}
-        >
-          <MenuItem value="IT">IT</MenuItem>
-          <MenuItem value="HR">HR</MenuItem>
-          <MenuItem value="Finance">Finance</MenuItem>
-        </Select>
-      </FormControl>
+          required
+        />
+
+        <TextField
+
+          label="Salary"
+          id="2"
+          type="number"
+          name="salary"
+          onChange={updateData}
+          required
+        />
+
+        <FormControl fullWidth>
+          <InputLabel id="Label">Dept</InputLabel>
+          <Select
+            labelId="Label"
+            id="4"
+            name="dept"
+            onChange={updateData}
+          >
+            <MenuItem value="IT">IT</MenuItem>
+            <MenuItem value="HR">HR</MenuItem>
+            <MenuItem value="Finance">Finance</MenuItem>
+          </Select>
+        </FormControl>
 
 
-      <Button variant="contained" color="primary" onClick={onsubmit}>
-        Submit
-      </Button>
+        <Button variant="contained" color="primary" onClick={onsubmit}>
+          Submit
+        </Button>
 
-    </Stack>
+      </Stack>
+    </Box>
+
   )
 }
 

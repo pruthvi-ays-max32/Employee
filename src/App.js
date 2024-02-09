@@ -4,6 +4,8 @@ import Navbar from './components/Navbar'
 import EmpDetails from './components/EmpDetails.jsx'
 import Employee from './components/Employee.jsx'
 
+import {Stack, Box, Button, List, ListItem, Paper,Grid} from '@mui/material'
+
 
 const App = () => {
   const obj={
@@ -122,19 +124,40 @@ const App = () => {
     setSelectedCentre(e.target.id)
   }
 
-
   return (
-    <div className="demo">
+    <Grid container className="demo">
       <Navbar obj={obj} displayCentre={displayCentre} />
-      <div className='main'>
-      <Employee empArr={employees} selectedEmp={selectedEmp} selectEmployee={selectEmployee} displayCentre={displayCentre}/>
-      <EmpDetails selectedEmp={selectedEmp} selectedCentre={selectedCentre} addemp={addemp} displayCentre={displayCentre} setSelectedEmp={setSelectedEmp} delEmp={delEmp} editEmployee={editEmployee}/>
-      
-      </div>
-     
-                  
-    </div>
+      <Grid item  xs={12} md={12} lg={12} sx={{width :"100%"}}>
+              <Grid container>
+        <Grid item sx={{width:"25%"}}>
+          <Box sx={{width:"100%"}}>
+            <Employee empArr={employees} selectedEmp={selectedEmp} selectEmployee={selectEmployee} displayCentre={displayCentre}/>  
+          </Box>
+          </Grid>
+        <Grid item sx={{width:"75%"}}>
+          <Box sx={{width:"100%"}}> 
+          <EmpDetails selectedEmp={selectedEmp} selectedCentre={selectedCentre} addemp={addemp} displayCentre={displayCentre} setSelectedEmp={setSelectedEmp} delEmp={delEmp} editEmployee={editEmployee}/>  
+          </Box>
+        </Grid>
+      </Grid> 
+      </Grid>
+                 
+    </Grid>
   )
+  
 }
 
 export default App
+
+
+
+// return (
+//   <Grid container className="demo">
+//     <Navbar obj={obj} displayCentre={displayCentre} />
+//     <Grid item xs={12} sm={12} md={11} lg={9} className='main'>
+//     <Employee empArr={employees} selectedEmp={selectedEmp} selectEmployee={selectEmployee} displayCentre={displayCentre}/>
+//     <EmpDetails selectedEmp={selectedEmp} selectedCentre={selectedCentre} addemp={addemp} displayCentre={displayCentre} setSelectedEmp={setSelectedEmp} delEmp={delEmp} editEmployee={editEmployee}/>
+    
+//     </Grid>                  
+//   </Grid>
+// )

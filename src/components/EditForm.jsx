@@ -108,9 +108,7 @@ temp[e.target.name]= e.target.value
 setEditedEmpobj(temp)
 }
   return (
-    <Stack sx={{ py: 10, px: 40 }} spacing={2}>
-       
-          
+    <Stack sx={{ py: 10, px: 10 }} spacing={2}>       
           <TextField
             id="1"       
             type="text"

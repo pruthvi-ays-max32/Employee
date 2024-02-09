@@ -69,10 +69,9 @@
 // Using Material UI
 
 import React from 'react'
-import './employee.css'
 import EmpForm from './EmpForm'
 import EditForm from './EditForm'
-import { Stack, Table, TableBody, TableRow, TableCell, Button, Box, Grid } from '@mui/material'
+import { Table, TableBody, TableRow, TableCell, Button, Box, Grid,  Card, CardContent, Paper} from '@mui/material'
 
 const EmpDetails = (props) => {
   function display() {
@@ -89,51 +88,56 @@ const EmpDetails = (props) => {
       return (<EmpTable selectedEmp={props.selectedEmp} displayCentre={props.displayCentre} delEmp={props.delEmp} />)
     }
     else {
-      return (<h2 style={{ color: "green" }}>Select employee to see details</h2>)
+      return (<h2 style={{ color: "red" }}>Select Employee Name From Employee List To See Details</h2>)
     }
   }
   return (
-    <Box className='empdetails'>
+    <Grid container>
+      <Grid item xs={12} sm={12} md={11} lg={10} >
       {
         display()
       }
-    </Box>
+      </Grid >     
+    </Grid>
   )
 }
 const EmpTable = (props) => {
 
   return (
-    <Stack py={10} px={50}>
 
-      <Table>
-        <TableBody>
-          <TableRow>
-            <TableCell>Name:</TableCell>
-            <TableCell>{props.selectedEmp.name}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Salary:</TableCell>
-            <TableCell>{props.selectedEmp.salary}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Department:</TableCell>
-            <TableCell>{props.selectedEmp.dept}</TableCell>
-          </TableRow>
-        </TableBody>
-
-        <Grid container spacing={2}>
-          <Grid Button xs={8}>
-          <Button  variant="contained" color="primary" id="2" className='edit' onClick={props.displayCentre}>edit</Button>
+    <Grid container spacing={2}>
+    <Grid item xs={10} md={10} lg={8} sx={{py:2, px:2}}>
+      <Card sx={{m:2}}>
+        <CardContent>
+          <Table sx={{m:2}}>
+            <TableBody>
+              <TableRow>
+                <TableCell>Name:</TableCell>
+                <TableCell>{props.selectedEmp.name}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Salary:</TableCell>
+                <TableCell>{props.selectedEmp.salary}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Department:</TableCell>
+                <TableCell>{props.selectedEmp.dept}</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+          <Grid container spacing={2}>
+            <Grid item>
+              <Button sx={{px:2, py:2}} variant="outlined" color="primary" id="2" className='edit' onClick={props.displayCentre}>Edit</Button>
+            </Grid>
+            <Grid item>
+              <Button  variant="outlined" color="primary" id="3" className='delete' onClick={props.delEmp}>Delete</Button>
+            </Grid>
           </Grid>
-          <Grid Button xs={4}>
-          <Button variant="contained" color="primary" id="3" className='delete' onClick={props.delEmp}>delete</Button>
-          </Grid>
-          
-        </Grid>
-      </Table>
-
-    </Stack>
-  )
-}
+        </CardContent>
+      </Card>
+    </Grid>
+  </Grid>
+);
+};
 
 export default EmpDetails
